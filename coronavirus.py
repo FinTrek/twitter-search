@@ -8,11 +8,12 @@ def authTwitter():
 	access_token = '1068395390909771776-HCxIyBND3cHYPh87JETdr00tAPB9D4'
 	access_token_secret = 'mHQp7o8xZo6XOQHlInSlZeLildpNZSkG4NuE0R6nuXPql'
 
-
+	print('Authorizing Twitter API access... ', end='')
 	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 	auth.set_access_token(access_token, access_token_secret)
 
 	api = tweepy.API(auth)
+	print('Done.')
 	return api
 
 api = authTwitter()
