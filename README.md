@@ -14,13 +14,13 @@ Format credentials.json like this:
 
 {
 \
-\	"consumer_key" : "your consumer key",
+&nbsp;&nbsp;&nbsp;&nbsp;"consumer_key" : "your consumer key",
 	\
-	"consumer_secret" : "your consumer secret",
+&nbsp;&nbsp;&nbsp;&nbsp;"consumer_secret" : "your consumer secret",
 	\
-\	"access_token" : "your access token",
+&nbsp;&nbsp;&nbsp;&nbsp;"access_token" : "your access token",
 	\
-\	"access_token_secret" : "your access token secret"
+&nbsp;&nbsp;&nbsp;&nbsp;"access_token_secret" : "your access token secret"
 	\
 }
 
