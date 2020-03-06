@@ -1,12 +1,18 @@
 '''Connect to Twitter API'''
 import tweepy
 import csv
+import json
 
 def authTwitter():
-	consumer_key = 'zLoTyTpJ9rHIVdTd3ZtI5YUSp'
-	consumer_secret = '9LszIWxvxL5vPfzCvIsWglXyDmqWiip0N94upSx3a7swg3Xl1H'
-	access_token = '1068395390909771776-HCxIyBND3cHYPh87JETdr00tAPB9D4'
-	access_token_secret = 'mHQp7o8xZo6XOQHlInSlZeLildpNZSkG4NuE0R6nuXPql'
+	with open('credentials.json', 'r') as f:
+		creds_json = f.read()
+
+	creds = json.loads(creds_json)
+	
+	consumer_key = creds['consumer_key']
+	consumer_secret = creds['consumer_secret']
+	access_token = creds['access_token']
+	access_token_secret = creds['access_token_secret']
 
 	print('Authorizing Twitter API access... ', end='')
 	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -16,7 +22,8 @@ def authTwitter():
 	print('Done.')
 	return api
 
-api = authTwitter()
+
+api = authTwitter()	#Automatically called when imported in other files.
 
 def generateData(phrase, fileCount):
 	filename = "data/{}_{}.csv".format(phrase, fileCount)

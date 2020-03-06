@@ -1,48 +1,48 @@
 import coronavirus
 import time
 
-fileCount = 3
+#Get current file count:
+fileCount = 15
+try:
+	with open('data/fileCount.txt', 'r') as f:
+			fileCount = int(f.read())
+except:
+	print(f'fileCount.txt not found, using default count ({fileCount}).')
+
+
+#Data Collection
 while True:
 	fileCount+=1
-	print('Collecting data for coronavirus... ', end='', flush=True)
-	coronavirus.generateData('coronavirus', fileCount)
-	print('Done.\nSleeping for 15 minutes...', end='', flush=True)
 
-	time.sleep(15*60)
-	print('Done.')
+	terms = ['coronavirus', 'wuhanvirus', 'covid19',
+			 'COVID2019', 'CoronaVirusOutbreak', 'CoronaVirusUpdate']
 
-	print('Collecting data for wuhanvirus... ', end='', flush=True)
-	coronavirus.generateData('wuhanvirus', fileCount)
-	print('Done.\nSleeping for 15 minutes...', end='', flush=True)
+	print(f'Set #{fileCount}:')
 
-	time.sleep(15*60)
-	print('Done.')
-
-	print('Collecting data for covid19... ', end='', flush=True)
-	coronavirus.generateData('covid19', fileCount)
-	print('Done.\nSleeping for 15 minutes...', end='', flush=True)
-
-	time.sleep(15*60)
-	print('Done.')
+	#generate a dataset for each term
+	for term in terms:
+		print(f'Collecting data for {term}... ', end='', flush=True)
+		coronavirus.generateData(f'{term}', fileCount)
+		print('Done.\nSleeping for 15 minutes... ', end='', flush=True)
+		time.sleep(15*60)
+		print('Done.', flush=True)
 	
-	print('Collecting data for COVID2019... ', end='', flush=True)
-	coronavirus.generateData('COVID2019', fileCount)
-	print('Done.\nSleeping for 15 minutes...', end='', flush=True)
+	#Record latest fileCount
+	with open('data/fileCount.txt', 'w') as f:
+		f.write(str(fileCount))
 
-	time.sleep(15*60)
-	print('Done.')
-	
-	print('Collecting data for CoronaVirusOutbreak... ', end='', flush=True)
-	coronavirus.generateData('CoronaVirusOutbreak', fileCount)
-	print('Done.\nSleeping for 15 minutes... ', end='', flush=True)
+	print('Done.\nBegin cooldown period: 6 hours', flush=True)
 
-	time.sleep(15*60)
-	print('Done.')
-	
-	print('Collecting data for CoronaVirusUpdate... ', end='', flush=True)
-	coronavirus.generateData('CoronaVirusUpdate', fileCount)
-	print('Done.\nWaiting for 6 hours before collecting again... ', end='', flush=True)
-	time.sleep(6*60*60)
-	print('Done.')
+	#Six hour cooldown period
+	for i in range(6):
+		n = 6 - i
+		if n > 1:
+			print(f'{n} hours remaining... ')
+		else:
+			print(f'{n} hour remaining... ', end = '', flush=True)
+		time.sleep(1*60*60)
+
+	print('Done.\n', flush=True)
+
 
 #Every 6 hours, this program generates a tweet dataset
