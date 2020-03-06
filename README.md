@@ -13,6 +13,7 @@ A 'credentials.json' file with your Twitter API credentials is required at the t
 Format credentials.json like this:
 
 {
+\
 	"consumer_key" : "your consumer key",
 	\
 	"consumer_secret" : "your consumer secret",
@@ -20,6 +21,7 @@ Format credentials.json like this:
 	"access_token" : "your access token",
 	\
 	"access_token_secret" : "your access token secret"
+	\
 }
 
 
