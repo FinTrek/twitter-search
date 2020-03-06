@@ -8,7 +8,7 @@ datacollection.py runs coronavirus.py for each element in list of search terms.
 
 Instructions:
 
-A 'credentials.json' file with your Twitter API credentials is required at the top level of the twitter-search directory. 
+A 'credentials.json' file with your Twitter API credentials is required at the top level of the twitter-search directory (alongside coronavirus.py and datacollection.py)
  
 Format credentials.json like this:
 
