@@ -2,7 +2,7 @@ import coronavirus
 import time
 
 #Get current file count:
-fileCount = 15
+fileCount = 17
 try:
 	with open('data/fileCount.txt', 'r') as f:
 			fileCount = int(f.read())
@@ -23,8 +23,9 @@ while True:
 	for term in terms:
 		print(f'Collecting data for {term}... ', end='', flush=True)
 		coronavirus.generateData(f'{term}', fileCount)
-		print('Done.\nSleeping for 15 minutes... ', end='', flush=True)
-		time.sleep(15*60)
+		if term != terms[-1]:
+			print('Done.\nSleeping for 15 minutes... ', end='', flush=True)
+			time.sleep(15*60)
 		print('Done.', flush=True)
 	
 	#Record latest fileCount
